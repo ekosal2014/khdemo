@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html xmlns:th="https://www.thymeleaf.org"
+	xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity4"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+    layout:decorator="layouts/layout">
+<head><meta charset="utf-8"></head>
+
+<body class="lnb_bg">
+
+<div class="wrap">
+
+	<!-- header -->
+	<!-- <div lang="en" th:replace="/header :: header_main"></div> -->
+	<!-- //header -->
+	<th:block layout:fragment="content">
+	<!-- Container -->
+	<div class="container">
+
+		<!-- content wrap -->
+		<div class="content add_lnb" >
+			
+			<!-- @20180624 lnb_wrap-->
+			<div lang="en" th:replace="fragments/left_menu :: left_menu"> </div>
+		
+			<div class="cnt_wrap">
+				<!-- title_wrap -->
+				<div class="tit_wrap cboth">
+					<div class="f_left">
+						<div class="tit_h3">
+							<ul>
+								<li><a th:href="@{/}">ទំព័រដើម</a></li>
+								<li><a href="javascript:">បញ្ចីបុគ្គលិក</a></li>
+								
+							</ul>
+						</div>
+					</div>
+				</div>
+				<!-- //title_wrap -->
+				<!-- <a th:href="@{/loan/loanNew}">AddNew</a> -->
+				<!-- title_wrap -->
+				<!-- <div class="tit_wrap cboth">
+					<div class="t_center">
+						<div class="tit_h3"><h3>បញ្ចីបុគ្គលិក</h3></div>
+					</div> -->
+					<!-- <div class="f_right">
+						<div class="srch_wrap" style="background-image:none !important;">							
+							<div class="srch_box" style="background-image:none !important;padding-right:0px !important;">
+								<input type="text" value="" placeholder="បញ្ចូល លេខកូដ ឬ ឈ្មោះអ្នកខ្ចី" id="search" style="width:193px;">
+								<a href="javascript:" class="btn_addnew" id="btn_addMore"><span class="blind">add new</span></a>
+							</div>
+						</div>
+					</div> -->
+			<!-- 	</div> -->
+				<!-- //title_wrap -->
+				<!-- title_wrap -->
+				<div class="tit_wrap cboth mgt10">
+					<div class="right_box" style="bottom: 10px !important;top:auto !important;" th:each="permission : ${#authentication.principal.permissions}" th:if="${permission.name_id == T(kh.com.loan.utils.ConstsUtils).EMPLOYEE_PERMISSION_ADD}">
+						<a href="javascript:" class="btn_addnew" id="btn_addMore" >
+							<span class="blind">add new</span>
+						</a>
+					</div>
+				</div>
+				<!-- //title_wrap -->
+
+				<!-- table_list -->
+				<div class="tbl_lst1 mgt5" id="tbl_user">
+					<table summary="">
+						<caption></caption>
+						<colgroup>
+						<col style="width:60px;">
+						<col style="width:60px;">
+						<col style="width:150px;">
+						<col style="width:120px;">
+						<col style="width:120px;">
+						<col style="width:170px;">
+						<col>
+					
+						<col style="width:150px;">
+						</colgroup>
+						<thead>
+							<tr>
+								<th><div><input type="checkbox"></div></th>
+								<th><div>ល.រ</div></th>
+								<th><div>ឈ្មោះបគ្គុលិក</div></th>
+								<th><div>ភេទ</div></th>
+								<th><div>លេខទូរសព័្ទ</div></th>
+								<th><div>អ៊ីមែល</div></th>
+								<th><div>អាស័យដ្ឋាន</div></th>
+							
+								<th><div></div></th>
+							</tr>
+						</thead>
+						<tfoot style="display:none;">
+							<tr><td colspan="8"><div class="t_center">ពុំទាន់មានទិន្នន័យនៅឡើយទេ</div></td></tr>
+						</tfoot>
+						<tbody style="display:;">
+							<!-- <tr>
+								<td><div><input type="checkbox"></div></td>
+								<td><div>1</div></td>
+								<td><div>LK-000-001</div></td>
+								<td><div>អេ កុសល</div></td>
+								<td><div>ប្រុស</div></td>
+								<td><div>010-019-234</div></td>
+								<td><div>123-234-456</div></td>
+								<td><div>បានបញ្ចប់</div></td>
+								<td><div>ខ្ចីម្ដងទៀត</div></td>
+								<td><div>ខ្ចីម្ដងទៀត</div></td>
+							</tr>  -->
+						</tbody>
+					</table>
+				</div>
+				<!-- //table_list -->
+
+				<!-- Paging wrap -->
+				<div class="paging_wrap">
+					<div class="combo_wrap">
+						<div class="combo_style">
+							<select style="width:80px;height: 27px !important;" name="num_rows" id="num_rows">
+								<option value="10">10</option>
+								<option value="30">30</option>
+								<option value="50">50</option>
+							</select>
+							<!-- <a href="javascript:" class="btn_style btn_combo_down" id="btn_combo_down"><span>15</span></a>
+							<ul style="display:none;" id="btn_ul_down">
+								<li><a href="javascript:">15</a></li>
+								<li><a href="javascript:">20</a></li> 
+								<li><a href="javascript:">50</a></li>
+							</ul> -->
+						</div>
+					</div>
+		
+					<!-- pagination -->
+					<div class="paging">
+						<!-- <a href="javascript:" class="btn_pag_cntr first"><span class="blind">first</span></a>
+						<a href="javascript:" class="btn_pag_cntr prev"><span class="blind">previous</span></a>
+						<span class="pag_num">
+							<a href="javascript:" class="on">1</a><a href="javascript:">2</a><a href="javascript:">3</a><a href="javascript:">4</a><a href="javascript:">5</a><a href="javascript:">6</a><a href="javascript:">7</a><a href="javascript:">8</a><a href="javascript:">9</a><a href="javascript:">10</a>
+						</span>
+						<a href="javascript:" class="btn_pag_cntr next on"><span class="blind">next</span></a>
+						<a href="javascript:" class="btn_pag_cntr last on"><span class="blind">last</span></a> -->
+					</div> 
+					<!-- //pagination -->
+				</div>
+				<!-- //Paging wrap -->
+			</div>
+		</div>
+		<!-- //content wrap -->
+	</div>
+	<!-- //Container -->
+	</th:block>
+	<!-- <div lang="en" th:replace="fragments/footer :: footer"> </div> -->
+
+	
+</div>
+     <input type="hidden" id="user_id" th:value="${#authentication.principal.user_id}">
+	 <th:block layout:fragment="asset">
+	 <script th:src="@{js/user.js}"></script>
+	   <div lang="en" th:replace="fragments/employeeAdd :: popup_employee"></div>	  
+	 </th:block>
+	 
+</body>
+</html>

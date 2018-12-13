@@ -1,0 +1,10 @@
+Manifest-Version: 1.0
+Implementation-Title: kh_demo
+Implementation-Version: 1.5.1-SNAPSHOT
+Built-By: E KOSAL
+Implementation-Vendor-Id: com.example.demo
+Build-Jdk: 1.8.0_144
+Implementation-URL: http://projects.spring.io/spring-boot/kh_demo/
+Created-By: Maven Integration for Eclipse
+Implementation-Vendor: Pivotal Software, Inc.
+
